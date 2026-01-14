@@ -269,18 +269,20 @@ function App() {
         </div>
 
         <div style={{ marginBottom: '20px' }}>
-          <h3>Output: +2</h3>
+          <h3>Output: Fibonacci</h3>
           <button onClick={() => setShowLoop2(true)} disabled={showLoop2}>Show</button>
 
           {showLoop2 && (
             <div style={{borderTop: '2px dashed #333', paddingTop: '20px' }}>
 
               {(() => {
-                let items = [];
-                for (let i = 1; i < 20; i += 2) {
-                  items.push(<div key={i}>{i}</div>);
+                let sequence = [1, 2];
+                for (let i = 2; i < 10; i++) {
+                  sequence.push(sequence[i - 1] + sequence[i - 2]);
                 }
-                return items;
+                return sequence.map((num, index) => (
+                   <div key={index}>{num}</div>
+                ));
               })()}
 
             </div>
